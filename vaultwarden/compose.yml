@@ -1,0 +1,17 @@
+services:
+  vaultwarden:
+    container_name: vaultwarden
+#    ports: # Uncomment if vaultwarden and npm are not running on the same computer
+#      - 80:80
+    networks:
+      - npm
+    image: vaultwarden/server:latest
+    restart: always
+    volumes:
+      - ./data:/data
+    environment:
+      - DOMAIN=https://vw.madhukraft.duckdns.org # put your own domain here
+
+networks:
+  npm:
+    external: true
